@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "https://PLACEHOLDER.trycloudflare.com/api/$1" }
+  ]
+}
