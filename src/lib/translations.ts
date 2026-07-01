@@ -5,7 +5,7 @@ export const translations = {
     about: { heading: 'Sobre mí', p1: 'Soy un Desarrollador de Software de Santiago, Chile. Mi experiencia se centra en Java con Spring Boot, construyendo microservicios escalables. También trabajo con Node.js y React para desarrollo full-stack.', p2: 'Soy un entusiasta de Linux y uso NeoVim como mi editor principal. Mi stack tecnológico también incluye TypeScript, Tailwind CSS y PostgreSQL.', p3: '' },
     projects: { heading: 'Mis proyectos' },
     projectsData: [
-      { title: 'API REST - Java Spring Boot', description: 'Microservicio con autenticación por sesiones, API Gateway y descubrimiento de servicios.', tags: ['Java', 'Spring Boot', 'PostgreSQL', 'Docker'], flags: ['API', 'Backend', 'Online', 'EC2', 'Lambda'] },
+      { title: 'API REST - Java Spring Boot', description: 'Microservicio con autenticación por sesiones, API Gateway y descubrimiento de servicios.', tags: ['Java', 'Spring Boot', 'PostgreSQL', 'Docker', 'EC2', 'Lambda'], flags: ['API', 'Backend', 'Online'] },
       { title: 'Procesamiento de Imágenes con IA', description: 'Aplicación web que elimina fondos de imágenes automáticamente usando un modelo pre-entrenado.', tags: ['Python', 'Flask', 'Docker'], flags: ['Online', 'Cloud'], imageUrl: '/backgroundremover.jpg', url: 'https://eraser-h6cota2n5a-uc.a.run.app/', target: '_blank' },
       { title: 'Panel de Gestión de Inventario', description: 'Gestión de inventario full-stack con CRUD, búsqueda, filtros y control de acceso por roles.', tags: ['React', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Tailwind'], flags: ['Dashboard', 'Full Stack'], imageUrl: '/ecommerce.jpg' },
     ],
@@ -26,7 +26,7 @@ export const translations = {
     about: { heading: 'About me', p1: 'I am a Software Developer from Santiago, Chile. My expertise lies in Java with Spring Boot, building scalable microservices. I also work with Node.js and React for full-stack development.', p2: 'I am a Linux enthusiast and use NeoVim as my daily driver. My tech stack also includes TypeScript, Tailwind CSS, and PostgreSQL.', p3: '' },
     projects: { heading: 'My projects' },
     projectsData: [
-      { title: 'API REST - Java Spring Boot', description: 'Microservice with session-based auth, API Gateway and service discovery.', tags: ['Java', 'Spring Boot', 'PostgreSQL', 'Docker'], flags: ['API', 'Backend', 'Online', 'EC2', 'Lambda'] },
+      { title: 'API REST - Java Spring Boot', description: 'Microservice with session-based auth, API Gateway and service discovery.', tags: ['Java', 'Spring Boot', 'PostgreSQL', 'Docker', 'EC2', 'Lambda'], flags: ['API', 'Backend', 'Online'] },
       { title: 'Image Processing with AI', description: 'Web app that removes image backgrounds automatically using a pre-trained model.', tags: ['Python', 'Flask', 'Docker'], flags: ['Online', 'Cloud'], imageUrl: '/backgroundremover.jpg', url: 'https://eraser-h6cota2n5a-uc.a.run.app/', target: '_blank' },
       { title: 'Inventory Management Dashboard', description: 'Full-stack inventory management with CRUD, search, filtering and role-based access control.', tags: ['React', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Tailwind'], flags: ['Dashboard', 'Full Stack'], imageUrl: '/ecommerce.jpg' },
     ],
