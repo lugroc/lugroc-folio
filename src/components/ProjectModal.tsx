@@ -30,9 +30,10 @@ export default function ProjectModal({ project, onClose }: Props) {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{project.title}</h3>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">{project.description}</p>
             <div className="flex flex-wrap gap-2 mb-4">
-              {project.flags.map((f, i) => (
-                <span key={i} className="bg-green-300/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-black rounded-full">{f}</span>
-              ))}
+              {project.flags.map((f, i) => {
+                const color = f === 'EC2' || f === 'Lambda' ? 'bg-orange-300/[0.7]' : 'bg-green-300/[0.7]';
+                return <span key={i} className={`${color} px-3 py-1 text-[0.7rem] uppercase tracking-wider text-black rounded-full`}>{f}</span>;
+              })}
               {project.tags.map((t, i) => (
                 <span key={i} className="bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white rounded-full dark:text-white/70">{t}</span>
               ))}
