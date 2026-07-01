@@ -38,7 +38,7 @@ export default function Project({ project, onClick }: Props) {
           <p className="mt-2 leading-relaxed text-gray-700 dark:text-white/70">{description}</p>
           <ul className="flex flex-wrap mt-4 gap-2">
             {flags.map((f, i) => {
-              const color = f === 'EC2' || f === 'Lambda' ? 'bg-orange-300/[0.7]' : 'bg-green-300/[0.7]';
+              const color = f === 'EC2' || f === 'Lambda' ? 'bg-indigo-400/[0.7]' : 'bg-green-300/[0.7]';
               return <li key={i} className={`${color} px-3 py-1 text-[0.7rem] uppercase tracking-wider text-black rounded-full`}>{f}</li>;
             })}
             {tags.map((t, i) => (
