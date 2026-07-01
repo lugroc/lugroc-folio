@@ -31,7 +31,7 @@ export default function ProjectModal({ project, onClose }: Props) {
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">{project.description}</p>
             <div className="flex flex-wrap gap-2 mb-4">
               {project.flags.map((f, i) => {
-                const color = f === 'EC2' || f === 'Lambda' ? 'bg-indigo-400/[0.7]' : 'bg-green-300/[0.7]';
+                const color = f === 'EC2' || f === 'Lambda' ? 'bg-black/[0.7] text-white' : 'bg-green-300/[0.7]';
                 return <span key={i} className={`${color} px-3 py-1 text-[0.7rem] uppercase tracking-wider text-black rounded-full`}>{f}</span>;
               })}
               {project.tags.map((t, i) => (
