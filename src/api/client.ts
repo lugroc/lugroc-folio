@@ -17,8 +17,8 @@ export async function login(email: string, password: string): Promise<string> {
     body: JSON.stringify({ email, password }),
   });
   if (!res.ok) throw new Error('Login failed');
-  const data = await res.json();
-  return data.sessionId;
+  const result = await res.json();
+  return result.sessionId;
 }
 
 export async function register(firstName: string, lastName: string, email: string, password: string): Promise<void> {
@@ -64,21 +64,4 @@ export async function sendContact(name: string, email: string, message: string):
     body: JSON.stringify({ name, email, message }),
   });
   if (!res.ok) throw new Error('Failed to send message');
-}
-
-export interface GitHubRepo {
-  id: number;
-  name: string;
-  description: string;
-  html_url: string;
-  stargazers_count: number;
-  forks_count: number;
-  language: string;
-  updated_at: string;
-}
-
-export async function fetchGitHubRepos(username: string): Promise<GitHubRepo[]> {
-  const res = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`);
-  if (!res.ok) throw new Error('Failed to fetch repos');
-  return res.json();
 }

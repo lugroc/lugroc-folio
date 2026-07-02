@@ -1,5 +1,3 @@
-'use client';
-
 import { useState, useEffect } from 'react';
 import { HiArrowUp } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'framer-motion';

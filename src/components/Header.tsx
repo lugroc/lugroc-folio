@@ -1,5 +1,3 @@
-'use client';
-
 import { motion } from 'framer-motion';
 import { links } from '../lib/data';
 import { useActiveSection } from '../context/active-section-context';
@@ -10,8 +8,8 @@ export default function Header() {
     useActiveSection();
   const { t } = useLanguage();
 
-  function handleClick(hash: string, name: string) {
-    setActiveSection(name as any);
+  function handleClick(hash: string, name: typeof links[number]['name']) {
+    setActiveSection(name);
     setTimeOfLastClick(Date.now());
     const el = document.querySelector(hash);
     if (el) el.scrollIntoView({ behavior: 'smooth' });

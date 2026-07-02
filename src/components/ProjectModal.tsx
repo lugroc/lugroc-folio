@@ -1,5 +1,3 @@
-'use client';
-
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiX, HiExternalLink } from 'react-icons/hi';
 import { Project } from '../lib/translations';

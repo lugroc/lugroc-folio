@@ -4,17 +4,19 @@ import { validateSession } from '../api/client';
 import { HiClock, HiUser, HiCheckCircle, HiShieldCheck } from 'react-icons/hi';
 import { useLanguage } from '../context/language-context';
 
+type SessionInfo = { customerId?: number; expiresAt?: string; valid: boolean } | null;
+
 export default function Dashboard() {
   const navigate = useNavigate();
   const { t } = useLanguage();
-  const [session, setSession] = useState<{ customerId?: number; expiresAt?: string; valid: boolean } | null>(null);
+  const [session, setSession] = useState<SessionInfo>(null);
 
   useEffect(() => {
     const sid = localStorage.getItem('sessionId');
     if (!sid) { navigate('/'); return; }
-    validateSession(sid).then(data => {
-      if (!data.valid) { localStorage.removeItem('sessionId'); navigate('/'); return; }
-      setSession(data);
+    validateSession(sid).then(info => {
+      if (!info.valid) { localStorage.removeItem('sessionId'); navigate('/'); return; }
+      setSession(info);
     });
   }, [navigate]);
 

@@ -1,5 +1,3 @@
-'use client';
-
 import { useLanguage } from '../context/language-context';
 
 export default function LanguageSwitch() {

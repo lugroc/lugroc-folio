@@ -1,5 +1,3 @@
-'use client';
-
 import { BsSun, BsMoon } from 'react-icons/bs';
 import { useTheme } from '../context/theme-context';
 

@@ -1,5 +1,3 @@
-'use client';
-
 import { useState } from 'react';
 import Hero from '../components/Hero';
 import SectionDivider from '../components/SectionDivider';

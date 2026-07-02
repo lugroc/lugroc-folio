@@ -1,5 +1,3 @@
-'use client';
-
 import { useState, FormEvent } from 'react';
 import SectionHeading from './SectionHeading';
 import { useSectionInView } from '../lib/hooks';

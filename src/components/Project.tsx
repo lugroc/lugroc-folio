@@ -1,5 +1,3 @@
-'use client';
-
 import { useRef } from 'react';
 import { useScroll, motion, useTransform } from 'framer-motion';
 import { Project as ProjectType } from '../lib/translations';

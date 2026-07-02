@@ -1,5 +1,3 @@
-'use client';
-
 import { motion, AnimatePresence } from 'framer-motion';
 import { useToast } from '../context/toast-context';
 import { HiCheckCircle, HiXCircle, HiInformationCircle, HiX } from 'react-icons/hi';
