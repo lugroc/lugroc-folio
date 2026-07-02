@@ -9,7 +9,6 @@ export const translations = {
       { title: 'Procesamiento de Imágenes con IA', description: 'Aplicación web que elimina fondos de imágenes automáticamente usando un modelo pre-entrenado.', tags: ['Python', 'Flask', 'Docker'], flags: ['Online', 'Cloud'], imageUrl: '/backgroundremover.jpg', url: 'https://eraser-h6cota2n5a-uc.a.run.app/', target: '_blank' },
       { title: 'Panel de Gestión de Inventario', description: 'Gestión de inventario full-stack con CRUD, búsqueda, filtros y control de acceso por roles.', tags: ['React', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Tailwind'], flags: ['Dashboard', 'Full Stack'], imageUrl: '/ecommerce.jpg' },
     ],
-    github: { heading: 'GitHub', noDescription: 'Sin descripción' },
     skills: { heading: 'Mis habilidades' },
     experience: { heading: 'Mi experiencia', items: [{ title: 'Desarrollador Freelance', location: 'Santiago, Chile', description: 'Desarrollando aplicaciones web full-stack y APIs REST usando Java, Spring Boot y React. Diseñando arquitecturas de microservicios con contenedores Docker.', date: '2022 - presente' }, { title: 'Evaluador de Motores de Búsqueda y Recopilación de Datos', location: 'Santiago, Chile', description: 'Evalué métricas de relevancia y calidad de motores de búsqueda.', date: '2022 - 2025' }, { title: 'Asistente Técnico de Computación', location: 'Santiago, Chile', description: 'Proporcioné soporte técnico y mantenimiento para sistemas informáticos. Asistí con la resolución de problemas de hardware y software.', date: '2014 - 2018' }] },
     education: { heading: 'Mi educación', items: [{ title: 'Ingeniería Civil Informática', location: 'Universidad San Sebastian', description: '', date: '2019 - 2021' }] },
@@ -17,8 +16,7 @@ export const translations = {
     footer: { rights: 'Todos los derechos reservados.', built: 'Acerca de este sitio web:', builtText: 'construido con React, Vite, TypeScript, Tailwind CSS, Framer Motion.' },
     auth: { login: 'Iniciar sesión', register: 'Registrarse', email: 'Correo electrónico', password: 'Contraseña', firstName: 'Nombre', lastName: 'Apellido', loginSuccess: '¡Inicio de sesión exitoso!', registerSuccess: '¡Registro exitoso! Ahora puedes iniciar sesión.', invalidEmail: 'Correo o contraseña inválidos', registerFailed: 'Registro fallido. El correo puede estar en uso.', loggingIn: 'Iniciando sesión...', registering: 'Registrando...', generateRandom: 'Generar nombre y correo aleatorios', noAccount: '¿No tienes cuenta?', hasAccount: '¿Ya tienes cuenta?' },
     layout: { session: 'Sesión', expired: 'Sesión expirada', logout: 'Cerrar sesión', loadingDashboard: 'Cargando panel...' },
-    dashboard: { heading: 'Mi Panel', userId: 'ID de Usuario', sessionStatus: 'Estado de Sesión', online: 'En línea', offline: 'Desconectado', timeRemaining: 'Tiempo Restante', sessionDetails: 'Detalles de Sesión', sessionId: 'ID de Sesión', createdAt: 'Creada', expiresAt: 'Expira' },
-    headerLogin: 'Iniciar sesión',
+    dashboard: { heading: 'Mi Panel', userId: 'ID de Usuario', sessionStatus: 'Estado de Sesión', online: 'En línea', timeRemaining: 'Tiempo Restante', sessionDetails: 'Detalles de Sesión', sessionId: 'ID de Sesión', createdAt: 'Creada', expiresAt: 'Expira' },
   },
   en: {
     nav: { home: 'Home', about: 'About', projects: 'Projects', skills: 'Skills', experience: 'Experience', education: 'Education', contact: 'Contact' },
@@ -30,7 +28,6 @@ export const translations = {
       { title: 'Image Processing with AI', description: 'Web app that removes image backgrounds automatically using a pre-trained model.', tags: ['Python', 'Flask', 'Docker'], flags: ['Online', 'Cloud'], imageUrl: '/backgroundremover.jpg', url: 'https://eraser-h6cota2n5a-uc.a.run.app/', target: '_blank' },
       { title: 'Inventory Management Dashboard', description: 'Full-stack inventory management with CRUD, search, filtering and role-based access control.', tags: ['React', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Tailwind'], flags: ['Dashboard', 'Full Stack'], imageUrl: '/ecommerce.jpg' },
     ],
-    github: { heading: 'GitHub', noDescription: 'No description' },
     skills: { heading: 'My skills' },
     experience: { heading: 'My experience', items: [{ title: 'Freelance Developer', location: 'Santiago, Chile', description: 'Developing full-stack web applications and REST APIs using Java, Spring Boot, and React. Designing microservices architectures with Docker containerization.', date: '2022 - present' }, { title: 'Search Engine Evaluator and Data Collection', location: 'Santiago, Chile', description: 'Evaluated search engine relevance and quality metrics.', date: '2022 - 2025' }, { title: 'Computer Technical Assistant', location: 'Santiago, Chile', description: 'Provided technical support and maintenance for computer systems. Assisted with hardware and software troubleshooting.', date: '2014 - 2018' }] },
     education: { heading: 'My education', items: [{ title: 'Ingeniería Civil Informática', location: 'Universidad San Sebastian', description: '', date: '2019 - 2021' }] },
@@ -38,8 +35,7 @@ export const translations = {
     footer: { rights: 'All rights reserved.', built: 'About this website:', builtText: 'built with React & Vite, TypeScript, Tailwind CSS, Framer Motion.' },
     auth: { login: 'Login', register: 'Register', email: 'Email', password: 'Password', firstName: 'First Name', lastName: 'Last Name', loginSuccess: 'Login successful!', registerSuccess: 'Registration successful! You can now log in.', invalidEmail: 'Invalid email or password', registerFailed: 'Registration failed. Email may already be taken.', loggingIn: 'Logging in...', registering: 'Registering...', generateRandom: 'Generate random name & email', noAccount: "Don't have an account?", hasAccount: 'Already have an account?' },
     layout: { session: 'Session', expired: 'Session expired', logout: 'Logout', loadingDashboard: 'Loading dashboard...' },
-    dashboard: { heading: 'My Dashboard', userId: 'User ID', sessionStatus: 'Session Status', online: 'Online', offline: 'Offline', timeRemaining: 'Time Remaining', sessionDetails: 'Session Details', sessionId: 'Session ID', createdAt: 'Created', expiresAt: 'Expires' },
-    headerLogin: 'Login',
+    dashboard: { heading: 'My Dashboard', userId: 'User ID', sessionStatus: 'Session Status', online: 'Online', timeRemaining: 'Time Remaining', sessionDetails: 'Session Details', sessionId: 'Session ID', createdAt: 'Created', expiresAt: 'Expires' },
   },
 };
 
