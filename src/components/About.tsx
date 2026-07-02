@@ -20,7 +20,6 @@ export default function About() {
       <SectionHeading>{t.about.heading}</SectionHeading>
       <p className="mb-3"><T>{t.about.p1}</T></p>
       <p className="mb-3"><T>{t.about.p2}</T></p>
-      {t.about.p3 && <p><T>{t.about.p3}</T></p>}
     </motion.section>
   );
 }
