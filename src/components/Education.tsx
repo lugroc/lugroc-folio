@@ -30,7 +30,6 @@ export default function Education() {
               <div className="bg-gray-100 border border-black/5 rounded-lg p-6 dark:bg-white/10 dark:text-white/80">
                 <h3 className="text-xl font-semibold">{item.title}</h3>
                 <p className="text-sm text-gray-500 dark:text-white/50">{item.location}</p>
-                {item.description && <p className="mt-3 leading-relaxed text-gray-700 dark:text-white/70">{item.description}</p>}
                 <span className="text-xs text-gray-400 dark:text-white/40 mt-2 block">{item.date}</span>
               </div>
             </motion.li>
