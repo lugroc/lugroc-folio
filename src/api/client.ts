@@ -58,10 +58,14 @@ export async function getCustomer(id: number): Promise<Customer> {
 
 export async function sendContact(name: string, email: string, message: string): Promise<void> {
   const apiUrl = import.meta.env.VITE_CONTACT_API_URL || `${AUTH}/contact`;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
   const res = await fetch(apiUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, email, message }),
+    signal: controller.signal,
   });
+  clearTimeout(timeout);
   if (!res.ok) throw new Error('Failed to send message');
 }
