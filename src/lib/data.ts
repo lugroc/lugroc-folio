@@ -11,8 +11,8 @@ export const links = [
 
 export const skillsData = [
   'Java', 'Spring Boot', 'Python', 'JavaScript', 'TypeScript',
-  'React', 'Next.js', 'Node.js', 'Express.js', 'Flask',
+  'React', 'Node.js', 'Express.js', 'Flask',
   'PostgreSQL', 'MongoDB', 'HTML', 'CSS', 'Tailwind',
   'Docker', 'Git', 'Linux', 'Google Cloud', 'AWS',
-  'JWT', 'Postman', 'Jira', 'Agile', 'REST APIs', 'Microservices',
+  'JUnit', 'Mockito', 'Maven', 'Postman', 'REST APIs', 'Microservices',
 ];
