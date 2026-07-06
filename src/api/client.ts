@@ -3,7 +3,10 @@ const AUTH = `${API_URL}/auth`;
 
 export async function checkBackendOnline(): Promise<boolean> {
   try {
-    await fetch(`${API_URL}/auth/validate/ping`, { method: 'HEAD', signal: AbortSignal.timeout(3000) });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 3000);
+    await fetch(`${API_URL}/auth/validate/ping`, { method: 'HEAD', signal: controller.signal, mode: 'cors' });
+    clearTimeout(timeout);
     return true;
   } catch {
     return false;
