@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { pdfjs, Document, Page } from 'react-pdf';
 import { FiDownload } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
@@ -11,6 +11,20 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 export default function CV() {
   const [numPages, setNumPages] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [pageWidth, setPageWidth] = useState(700);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      if (containerRef.current) {
+        const w = containerRef.current.clientWidth - 48;
+        setPageWidth(Math.min(w, 800));
+      }
+    };
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
+  }, []);
 
   const onLoadSuccess = useCallback(({ numPages }: { numPages: number }) => {
     setNumPages(numPages);
@@ -37,14 +51,13 @@ export default function CV() {
           </a>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-8 overflow-hidden">
+        <div ref={containerRef} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-8">
           <Document file="/cv.pdf" onLoadSuccess={onLoadSuccess}>
             {Array.from({ length: numPages || 0 }, (_, i) => (
-              <div className="max-w-full overflow-hidden">
+              <div key={`page_${i + 1}`} className="flex justify-center mb-4 last:mb-0">
                 <Page
-                  key={`page_${i + 1}`}
                   pageNumber={i + 1}
-                  className="mb-4 last:mb-0 mx-auto"
+                  width={pageWidth}
                   renderTextLayer={false}
                   renderAnnotationLayer={false}
                 />
