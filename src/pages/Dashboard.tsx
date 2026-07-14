@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { validateSession, getProducts, createProduct, updateProduct, deleteProduct } from '../api/client';
-import { HiClock, HiUser, HiCheckCircle, HiShieldCheck, HiPlus, HiPencil, HiTrash, HiSearch, HiX } from 'react-icons/hi';
+import { HiClock, HiUser, HiCheckCircle, HiShieldCheck, HiPlus, HiPencil, HiTrash, HiSearch, HiBookOpen } from 'react-icons/hi';
 import { useLanguage } from '../context/language-context';
 
 type SessionInfo = { customerId?: number; expiresAt?: string; valid: boolean } | null;
@@ -111,6 +111,23 @@ export default function Dashboard() {
             <h3 className="font-semibold text-gray-700">{t.dashboard.timeRemaining}</h3>
           </div>
           <p className="text-2xl font-bold text-gray-900">{hours}h {minutes.toString().padStart(2, '0')}m</p>
+        </div>
+      </div>
+
+      <div className="bg-white rounded-xl p-6 shadow-sm mb-8">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <HiBookOpen className="w-5 h-5 text-gray-500" />
+            <span className="font-medium text-gray-700">API Documentation</span>
+          </div>
+          <a
+            href="/docs"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 bg-gray-900 text-white rounded-lg text-sm font-medium hover:bg-gray-700 transition"
+          >
+            Open Docs
+          </a>
         </div>
       </div>
 
