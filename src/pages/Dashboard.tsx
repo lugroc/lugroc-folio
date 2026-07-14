@@ -14,6 +14,7 @@ interface Product {
   price: number;
   quantity: number;
   category: string;
+  updatedAt?: string;
 }
 
 const emptyForm = { name: '', sku: '', description: '', price: 0, quantity: 0, category: '' };
@@ -22,16 +23,42 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const { t, lang } = useLanguage();
   const [session, setSession] = useState<SessionInfo>(null);
-  const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [allProducts, setAllProducts] = useState<Product[]>(() => {
+    try {
+      const raw = localStorage.getItem('product_cache');
+      if (raw) return JSON.parse(raw).products;
+    } catch {}
+    return [];
+  });
   const [search, setSearch] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState<Product | null>(null);
   const [form, setForm] = useState(emptyForm);
   const [loading, setLoading] = useState(false);
 
-  const load = useCallback(async () => {
+  function versionKey(products: Product[]): string {
+    return products.map(p => `${p.id}:${p.updatedAt ?? ''}`).join('|');
+  }
+
+  function mergeLists(current: Product[], fresh: Product[]): Product[] {
+    const curV = versionKey(current);
+    const newV = versionKey(fresh);
+    if (curV === newV) return current;
+
+    const map = new Map(current.map(p => [p.id, p]));
+    for (const p of fresh) map.set(p.id, p);
+    const merged = Array.from(map.values());
+    localStorage.setItem('product_cache', JSON.stringify({ products: merged, cachedAt: Date.now() }));
+    return merged;
+  }
+
+  const load = useCallback(async (skipCache?: boolean) => {
     setLoading(true);
-    try { setAllProducts(await getProducts()); } catch {}
+    try {
+      const fresh = await getProducts();
+      setAllProducts(prev => skipCache ? fresh : mergeLists(prev, fresh));
+      if (skipCache) localStorage.setItem('product_cache', JSON.stringify({ products: fresh, cachedAt: Date.now() }));
+    } catch {}
     setLoading(false);
   }, []);
 
@@ -53,7 +80,15 @@ export default function Dashboard() {
   }, [navigate]);
 
   useEffect(() => {
-    if (session?.valid) load();
+    if (session?.valid) {
+      const raw = localStorage.getItem('product_cache');
+      const cached = raw ? JSON.parse(raw) : null;
+      if (!cached || Date.now() - cached.cachedAt > 300000) {
+        load(true);
+      } else {
+        load();
+      }
+    }
   }, [session, load]);
 
   const handleSave = async () => {
@@ -65,18 +100,18 @@ export default function Dashboard() {
     setShowForm(false);
     setEditing(null);
     setForm(emptyForm);
-    load();
+    load(true);
+  };
+
+  const handleDelete = async (id: number) => {
+    await deleteProduct(id);
+    load(true);
   };
 
   const handleEdit = (p: Product) => {
     setForm({ name: p.name, sku: p.sku || '', description: p.description || '', price: p.price, quantity: p.quantity, category: p.category || '' });
     setEditing(p);
     setShowForm(true);
-  };
-
-  const handleDelete = async (id: number) => {
-    await deleteProduct(id);
-    load();
   };
 
   const openCreate = () => {

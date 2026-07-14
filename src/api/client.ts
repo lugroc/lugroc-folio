@@ -67,6 +67,7 @@ export interface Product {
   price: number;
   quantity: number;
   category: string;
+  updatedAt?: string;
 }
 
 function authHeaders(): Record<string, string> {
