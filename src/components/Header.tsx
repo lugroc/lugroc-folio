@@ -51,7 +51,14 @@ export default function Header() {
               </li>
             );
           })}
-
+          <li className="h-3/4 flex items-center justify-center relative">
+            <a
+              href="/docs"
+              className="flex w-full items-center justify-center whitespace-nowrap px-3 py-3 hover:text-gray-950 transition dark:text-gray-300 dark:hover:text-white text-[0.9rem] font-medium"
+            >
+              Docs
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
