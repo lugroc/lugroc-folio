@@ -1,6 +1,6 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { validateSession, getProducts, createProduct, updateProduct, deleteProduct } from '../api/client';
+import { validateSession, getProducts, createProduct, updateProduct, deleteProduct, searchProducts } from '../api/client';
 import { HiClock, HiUser, HiCheckCircle, HiShieldCheck, HiPlus, HiPencil, HiTrash, HiSearch, HiBookOpen } from 'react-icons/hi';
 import { useLanguage } from '../context/language-context';
 
@@ -28,12 +28,20 @@ export default function Dashboard() {
   const [editing, setEditing] = useState<Product | null>(null);
   const [form, setForm] = useState(emptyForm);
   const [loading, setLoading] = useState(false);
+  const searchTimer = useRef<ReturnType<typeof setTimeout>>();
 
   const load = useCallback(async () => {
     setLoading(true);
     try { setProducts(await getProducts()); } catch {}
     setLoading(false);
   }, []);
+
+  const doSearch = useCallback(async (q: string) => {
+    if (!q.trim()) { load(); return; }
+    setLoading(true);
+    try { setProducts(await searchProducts(q)); } catch { load(); }
+    setLoading(false);
+  }, [load]);
 
   useEffect(() => {
     const sid = localStorage.getItem('sessionId');
@@ -48,9 +56,11 @@ export default function Dashboard() {
     if (session?.valid) load();
   }, [session, load]);
 
-  const filtered = search
-    ? products.filter(p => p.name.toLowerCase().includes(search.toLowerCase()))
-    : products;
+  function handleSearchChange(value: string) {
+    setSearch(value);
+    clearTimeout(searchTimer.current);
+    searchTimer.current = setTimeout(() => doSearch(value), 300);
+  }
 
   const handleSave = async () => {
     if (editing) {
@@ -141,7 +151,7 @@ export default function Dashboard() {
                 className="pl-9 pr-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-full sm:w-48"
                 placeholder={t.inventory.search}
                 value={search}
-                onChange={e => setSearch(e.target.value)}
+                onChange={e => handleSearchChange(e.target.value)}
               />
             </div>
             <button onClick={openCreate} className="flex items-center gap-1.5 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition">
@@ -170,7 +180,7 @@ export default function Dashboard() {
 
         {loading ? (
           <p className="text-center text-gray-400 py-8">{t.layout.loadingDashboard}</p>
-        ) : filtered.length === 0 ? (
+        ) : products.length === 0 ? (
           <p className="text-center text-gray-400 py-8">{t.inventory.empty}</p>
         ) : (
           <div className="overflow-x-auto">
@@ -186,7 +196,7 @@ export default function Dashboard() {
                 </tr>
               </thead>
               <tbody>
-                {filtered.map(p => (
+                {products.map(p => (
                   <tr key={p.id} className="border-b last:border-0 hover:bg-gray-50">
                     <td className="py-2.5 pr-4 font-medium text-gray-900">{p.name}</td>
                     <td className="py-2.5 pr-4 text-gray-600 hidden sm:table-cell">{p.sku}</td>
