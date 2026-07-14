@@ -17,6 +17,7 @@ export const translations = {
     auth: { login: 'Iniciar sesión', register: 'Registrarse', email: 'Correo electrónico', password: 'Contraseña', firstName: 'Nombre', lastName: 'Apellido', loginSuccess: '¡Inicio de sesión exitoso!', registerSuccess: '¡Registro exitoso! Ahora puedes iniciar sesión.', invalidEmail: 'Correo o contraseña inválidos', registerFailed: 'Registro fallido. El correo puede estar en uso.', loggingIn: 'Iniciando sesión...', registering: 'Registrando...', generateRandom: 'Generar nombre y correo aleatorios', noAccount: '¿No tienes cuenta?', hasAccount: '¿Ya tienes cuenta?' },
     layout: { session: 'Sesión', expired: 'Sesión expirada', logout: 'Cerrar sesión', loadingDashboard: 'Cargando panel...' },
     dashboard: { heading: 'Mi Panel', userId: 'ID de Usuario', sessionStatus: 'Estado de Sesión', online: 'En línea', timeRemaining: 'Tiempo Restante', sessionDetails: 'Detalles de Sesión', sessionId: 'ID de Sesión', createdAt: 'Creada', expiresAt: 'Expira' },
+    inventory: { heading: 'Inventario', add: 'Agregar', edit: 'Editar', del: 'Eliminar', save: 'Guardar', cancel: 'Cancelar', name: 'Nombre', sku: 'SKU', description: 'Descripción', price: 'Precio', quantity: 'Cantidad', category: 'Categoría', search: 'Buscar producto...', empty: 'Sin productos aún' },
   },
   en: {
     nav: { home: 'Home', about: 'About', projects: 'Projects', skills: 'Skills', experience: 'Experience', education: 'Education', contact: 'Contact' },
@@ -36,6 +37,7 @@ export const translations = {
     auth: { login: 'Login', register: 'Register', email: 'Email', password: 'Password', firstName: 'First Name', lastName: 'Last Name', loginSuccess: 'Login successful!', registerSuccess: 'Registration successful! You can now log in.', invalidEmail: 'Invalid email or password', registerFailed: 'Registration failed. Email may already be taken.', loggingIn: 'Logging in...', registering: 'Registering...', generateRandom: 'Generate random name & email', noAccount: "Don't have an account?", hasAccount: 'Already have an account?' },
     layout: { session: 'Session', expired: 'Session expired', logout: 'Logout', loadingDashboard: 'Loading dashboard...' },
     dashboard: { heading: 'My Dashboard', userId: 'User ID', sessionStatus: 'Session Status', online: 'Online', timeRemaining: 'Time Remaining', sessionDetails: 'Session Details', sessionId: 'Session ID', createdAt: 'Created', expiresAt: 'Expires' },
+    inventory: { heading: 'Inventory', add: 'Add', edit: 'Edit', del: 'Delete', save: 'Save', cancel: 'Cancel', name: 'Name', sku: 'SKU', description: 'Description', price: 'Price', quantity: 'Qty', category: 'Category', search: 'Search products...', empty: 'No products yet' },
   },
 };
 

@@ -59,6 +59,58 @@ export async function getCustomer(id: number): Promise<Customer> {
   return res.json();
 }
 
+export interface Product {
+  id: number;
+  name: string;
+  sku: string;
+  description: string;
+  price: number;
+  quantity: number;
+  category: string;
+}
+
+function authHeaders() {
+  const sid = localStorage.getItem('sessionId');
+  return sid ? { 'X-Session-Id': sid, 'Content-Type': 'application/json' } : { 'Content-Type': 'application/json' };
+}
+
+export async function getProducts(): Promise<Product[]> {
+  const res = await fetch(`${AUTH}/products`, { headers: authHeaders() });
+  if (!res.ok) throw new Error('Failed to fetch products');
+  return res.json();
+}
+
+export async function createProduct(product: Partial<Product>): Promise<Product> {
+  const res = await fetch(`${AUTH}/products`, {
+    method: 'POST', headers: authHeaders(),
+    body: JSON.stringify(product),
+  });
+  if (!res.ok) throw new Error('Failed to create product');
+  return res.json();
+}
+
+export async function updateProduct(id: number, product: Partial<Product>): Promise<Product> {
+  const res = await fetch(`${AUTH}/products/${id}`, {
+    method: 'PUT', headers: authHeaders(),
+    body: JSON.stringify(product),
+  });
+  if (!res.ok) throw new Error('Failed to update product');
+  return res.json();
+}
+
+export async function deleteProduct(id: number): Promise<void> {
+  const res = await fetch(`${AUTH}/products/${id}`, { method: 'DELETE', headers: authHeaders() });
+  if (!res.ok) throw new Error('Failed to delete product');
+}
+
+export async function searchProducts(name: string): Promise<Product[]> {
+  const res = await fetch(`${AUTH}/products/search?name=${encodeURIComponent(name)}`, {
+    headers: authHeaders(),
+  });
+  if (!res.ok) throw new Error('Failed to search products');
+  return res.json();
+}
+
 export async function sendContact(name: string, email: string, message: string): Promise<void> {
   const apiUrl = import.meta.env.VITE_CONTACT_API_URL || `${AUTH}/contact`;
   const controller = new AbortController();
