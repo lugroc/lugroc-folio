@@ -8,9 +8,12 @@
     { "source": "/api/auth/customer/:id", "destination": "http://18.210.254.245:8080/api/v1/customers/:id" },
     { "source": "/api/auth/products/:path*", "destination": "http://18.210.254.245:8080/api/v1/products/:path*" },
     { "source": "/api/auth/products", "destination": "http://18.210.254.245:8080/api/v1/products" },
-    { "source": "/api/docs", "destination": "http://18.210.254.245:8080/swagger-ui/index.html" },
     { "source": "/swagger-ui/:path*", "destination": "http://18.210.254.245:8080/swagger-ui/:path*" },
     { "source": "/v3/api-docs/:path*", "destination": "http://18.210.254.245:8080/v3/api-docs/:path*" },
-    { "source": "/:path*", "destination": "/index.html" }
+    { "source": "/dashboard", "destination": "/index.html" },
+    { "source": "/cv", "destination": "/index.html" }
+  ],
+  "redirects": [
+    { "source": "/api/docs", "destination": "/swagger-ui/index.html", "permanent": false }
   ]
 }
