@@ -148,7 +148,7 @@ export default function Dashboard() {
             <div className="relative flex-1 sm:flex-initial">
               <HiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
-                className="pl-9 pr-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-full sm:w-48"
+                className="pl-9 pr-3 py-2 border rounded-lg text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 w-full sm:w-48"
                 placeholder={t.inventory.search}
                 value={search}
                 onChange={e => handleSearchChange(e.target.value)}
@@ -164,12 +164,12 @@ export default function Dashboard() {
         {showForm && (
           <div className="mb-6 p-4 border rounded-lg bg-gray-50">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
-              <input className="px-3 py-2 border rounded text-sm" placeholder={t.inventory.name} value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
-              <input className="px-3 py-2 border rounded text-sm" placeholder={t.inventory.sku} value={form.sku} onChange={e => setForm(f => ({ ...f, sku: e.target.value }))} />
-              <input className="px-3 py-2 border rounded text-sm" placeholder={t.inventory.category} value={form.category} onChange={e => setForm(f => ({ ...f, category: e.target.value }))} />
-              <input className="px-3 py-2 border rounded text-sm" placeholder={t.inventory.price} type="number" step="0.01" value={form.price} onChange={e => setForm(f => ({ ...f, price: parseFloat(e.target.value) || 0 }))} />
-              <input className="px-3 py-2 border rounded text-sm" placeholder={t.inventory.quantity} type="number" value={form.quantity} onChange={e => setForm(f => ({ ...f, quantity: parseInt(e.target.value) || 0 }))} />
-              <input className="px-3 py-2 border rounded text-sm" placeholder={t.inventory.description} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} />
+              <input className="px-3 py-2 border rounded text-sm text-gray-900 dark:text-white" placeholder={t.inventory.name} value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
+              <input className="px-3 py-2 border rounded text-sm text-gray-900 dark:text-white" placeholder={t.inventory.sku} value={form.sku} onChange={e => setForm(f => ({ ...f, sku: e.target.value }))} />
+              <input className="px-3 py-2 border rounded text-sm text-gray-900 dark:text-white" placeholder={t.inventory.category} value={form.category} onChange={e => setForm(f => ({ ...f, category: e.target.value }))} />
+              <input className="px-3 py-2 border rounded text-sm text-gray-900 dark:text-white" placeholder={t.inventory.price} type="number" step="0.01" value={form.price} onChange={e => setForm(f => ({ ...f, price: parseFloat(e.target.value) || 0 }))} />
+              <input className="px-3 py-2 border rounded text-sm text-gray-900 dark:text-white" placeholder={t.inventory.quantity} type="number" value={form.quantity} onChange={e => setForm(f => ({ ...f, quantity: parseInt(e.target.value) || 0 }))} />
+              <input className="px-3 py-2 border rounded text-sm text-gray-900 dark:text-white" placeholder={t.inventory.description} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} />
             </div>
             <div className="flex gap-2">
               <button onClick={handleSave} className="bg-green-600 text-white px-4 py-1.5 rounded text-sm font-medium hover:bg-green-700 transition">{t.inventory.save}</button>
