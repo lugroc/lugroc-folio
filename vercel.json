@@ -6,6 +6,7 @@
     { "source": "/api/auth/logout", "destination": "http://18.210.254.245:8080/api/v1/sessions/logout" },
     { "source": "/api/auth/contact", "destination": "http://18.210.254.245:8080/api/v1/notifications/contact" },
     { "source": "/api/auth/customer/:id", "destination": "http://18.210.254.245:8080/api/v1/customers/:id" },
+    { "source": "/api/auth/products", "destination": "http://18.210.254.245:8080/api/v1/products" },
     { "source": "/api/auth/products/:path*", "destination": "http://18.210.254.245:8080/api/v1/products/:path*" },
     { "source": "/swagger-ui/:path*", "destination": "http://18.210.254.245:8080/swagger-ui/:path*" },
     { "source": "/v3/api-docs", "destination": "http://18.210.254.245:8080/v3/api-docs" },
