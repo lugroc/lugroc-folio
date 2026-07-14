@@ -63,7 +63,7 @@ export default function Layout({ children }: Props) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', fontFamily: 'Inter, Arial, sans-serif', background: '#f0f2f5' }}>
+    <div className="bg-gray-100 dark:bg-gray-900" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', fontFamily: 'Inter, Arial, sans-serif' }}>
       <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.75rem 1.5rem', background: '#1a1a2e', color: 'white', boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }}>
         <Link to="/" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.1rem' }}>LucianoGro</Link>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
@@ -72,11 +72,11 @@ export default function Layout({ children }: Props) {
               {t.layout.session}: {timeLeft}
             </span>
           )}
-          {customerName && <span style={{ fontSize: '0.85rem', color: '#ccc' }}>{customerName}</span>}
+          {customerName && <span className="dark:text-gray-400" style={{ fontSize: '0.85rem', color: '#ccc' }}>{customerName}</span>}
           <button onClick={handleLogout} style={{ padding: '6px 14px', background: 'rgba(255,255,255,0.15)', color: 'white', border: 'none', borderRadius: 6, cursor: 'pointer', fontSize: '0.85rem' }}>{t.layout.logout}</button>
         </div>
       </header>
-      <main style={{ flex: 1, padding: '2rem' }}>{children}</main>
+      <main className="transition-colors" style={{ flex: 1, padding: '2rem' }}>{children}</main>
     </div>
   );
 }
