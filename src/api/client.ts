@@ -69,9 +69,11 @@ export interface Product {
   category: string;
 }
 
-function authHeaders() {
+function authHeaders(): Record<string, string> {
   const sid = localStorage.getItem('sessionId');
-  return sid ? { 'X-Session-Id': sid, 'Content-Type': 'application/json' } : { 'Content-Type': 'application/json' };
+  const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+  if (sid) headers['X-Session-Id'] = sid;
+  return headers;
 }
 
 export async function getProducts(): Promise<Product[]> {
