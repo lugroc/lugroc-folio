@@ -1,6 +1,6 @@
-import { useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { validateSession, getProducts, createProduct, updateProduct, deleteProduct, searchProducts } from '../api/client';
+import { validateSession, getProducts, createProduct, updateProduct, deleteProduct } from '../api/client';
 import { HiClock, HiUser, HiCheckCircle, HiShieldCheck, HiPlus, HiPencil, HiTrash, HiSearch, HiBookOpen } from 'react-icons/hi';
 import { useLanguage } from '../context/language-context';
 
@@ -30,15 +30,11 @@ export default function Dashboard() {
     } catch {}
     return [];
   });
-  const [displayProducts, setDisplayProducts] = useState<Product[]>([]);
   const [search, setSearch] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState<Product | null>(null);
   const [form, setForm] = useState(emptyForm);
   const [loading, setLoading] = useState(false);
-  const searchTimer = useRef<ReturnType<typeof setTimeout>>();
-
-  useEffect(() => { setDisplayProducts(allProducts); }, [allProducts]);
 
   function versionKey(products: Product[]): string {
     return products.map(p => `${p.id}:${p.updatedAt ?? ''}`).join('|');
@@ -66,21 +62,13 @@ export default function Dashboard() {
     setLoading(false);
   }, []);
 
-  function handleSearch(value: string) {
-    setSearch(value);
-    if (!value.trim()) { setDisplayProducts(allProducts); return; }
-    const q = value.toLowerCase();
-    setDisplayProducts(allProducts.filter(p =>
+  const filtered = useMemo(() => {
+    if (!search.trim()) return allProducts;
+    const q = search.toLowerCase();
+    return allProducts.filter(p =>
       [p.name, p.sku, p.category, p.description].some(f => f?.toLowerCase().includes(q))
-    ));
-    clearTimeout(searchTimer.current);
-    searchTimer.current = setTimeout(async () => {
-      try {
-        const results = await searchProducts(value);
-        setDisplayProducts(results);
-      } catch {}
-    }, 300);
-  }
+    );
+  }, [allProducts, search]);
 
   useEffect(() => {
     const sid = localStorage.getItem('sessionId');
@@ -192,7 +180,7 @@ export default function Dashboard() {
                 className="pl-9 pr-3 py-2 border dark:border-gray-600 rounded-lg text-sm text-gray-900 dark:text-white bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full sm:w-48"
                 placeholder={t.inventory.search}
                 value={search}
-                onChange={e => handleSearch(e.target.value)}
+                onChange={e => setSearch(e.target.value)}
               />
             </div>
             <button onClick={openCreate} className="flex items-center gap-1.5 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition">
@@ -221,7 +209,7 @@ export default function Dashboard() {
 
         {loading ? (
           <p className="text-center text-gray-400 dark:text-gray-500 py-8">{t.layout.loadingDashboard}</p>
-        ) : displayProducts.length === 0 ? (
+        ) : filtered.length === 0 ? (
           <p className="text-center text-gray-400 dark:text-gray-500 py-8">{t.inventory.empty}</p>
         ) : (
           <div className="overflow-x-auto">
@@ -237,7 +225,7 @@ export default function Dashboard() {
                 </tr>
               </thead>
               <tbody>
-                {displayProducts.map(p => (
+                {filtered.map(p => (
                   <tr key={p.id} className="border-b dark:border-gray-700 last:border-0 hover:bg-gray-50 dark:hover:bg-gray-700">
                     <td className="py-2.5 pr-4 font-medium text-gray-900 dark:text-gray-100">{p.name}</td>
                     <td className="py-2.5 pr-4 text-gray-600 dark:text-gray-400 hidden sm:table-cell">{p.sku}</td>
